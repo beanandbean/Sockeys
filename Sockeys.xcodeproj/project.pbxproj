@@ -14,6 +14,9 @@
 		2CD0BA2F1D0AF51300AB58D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CD0BA2D1D0AF51300AB58D2 /* LaunchScreen.storyboard */; };
 		2CD0BA3A1D0AF51300AB58D2 /* SockeysTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD0BA391D0AF51300AB58D2 /* SockeysTests.swift */; };
 		2CD0BA451D0AF51300AB58D2 /* SockeysUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD0BA441D0AF51300AB58D2 /* SockeysUITests.swift */; };
+		2CD0BA571D0AFAD500AB58D2 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD0BA561D0AFAD500AB58D2 /* Key.swift */; };
+		2CD608861D0BB90800FFD51E /* KeyboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD608851D0BB90800FFD51E /* KeyboardController.swift */; };
+		2CD608881D0BC16600FFD51E /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD608871D0BC16600FFD51E /* NetworkController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		2CD0BA401D0AF51300AB58D2 /* SockeysUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SockeysUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CD0BA441D0AF51300AB58D2 /* SockeysUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SockeysUITests.swift; sourceTree = "<group>"; };
 		2CD0BA461D0AF51300AB58D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CD0BA561D0AFAD500AB58D2 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
+		2CD608851D0BB90800FFD51E /* KeyboardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardController.swift; sourceTree = "<group>"; };
+		2CD608871D0BC16600FFD51E /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,9 @@
 				2CD0BA2B1D0AF51300AB58D2 /* Assets.xcassets */,
 				2CD0BA2D1D0AF51300AB58D2 /* LaunchScreen.storyboard */,
 				2CD0BA301D0AF51300AB58D2 /* Info.plist */,
+				2CD0BA561D0AFAD500AB58D2 /* Key.swift */,
+				2CD608851D0BB90800FFD51E /* KeyboardController.swift */,
+				2CD608871D0BC16600FFD51E /* NetworkController.swift */,
 			);
 			path = Sockeys;
 			sourceTree = "<group>";
@@ -256,8 +265,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CD608881D0BC16600FFD51E /* NetworkController.swift in Sources */,
+				2CD608861D0BB90800FFD51E /* KeyboardController.swift in Sources */,
 				2CD0BA271D0AF51300AB58D2 /* ViewController.swift in Sources */,
 				2CD0BA251D0AF51300AB58D2 /* AppDelegate.swift in Sources */,
+				2CD0BA571D0AFAD500AB58D2 /* Key.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,7 +361,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -389,7 +401,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -402,9 +414,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Sockeys/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BeanAndBean.Sockeys;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -413,9 +427,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Sockeys/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BeanAndBean.Sockeys;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
@@ -484,6 +500,7 @@
 				2CD0BA4B1D0AF51300AB58D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2CD0BA4C1D0AF51300AB58D2 /* Build configuration list for PBXNativeTarget "SockeysTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +509,7 @@
 				2CD0BA4E1D0AF51300AB58D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2CD0BA4F1D0AF51300AB58D2 /* Build configuration list for PBXNativeTarget "SockeysUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +518,7 @@
 				2CD0BA511D0AF51300AB58D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
