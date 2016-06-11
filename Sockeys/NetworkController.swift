@@ -45,6 +45,7 @@ class NetworkController {
     func disconnect() {
         assert(connected)
         socket.close()
+        connected = false
     }
     
 }
