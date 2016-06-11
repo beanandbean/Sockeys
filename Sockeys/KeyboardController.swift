@@ -21,26 +21,27 @@ class KeyboardController {
         }
     }
     
-    var keys = Set<String>()
-    var modifiers = Set<String>()
+    var keys = [String]()
+    var modifiers = [String]()
     
     func keyDown(key: String) {
         assert(!keys.contains(key) && !modifiers.contains(key))
-        assert(modifiers.isDisjointWith(keys))
-        keys.insert(key)
+        keys.append(key)
     }
     
     func keyUp(key: String) {
-        assert(keys.contains(key) || modifiers.contains(key))
-        assert(modifiers.isDisjointWith(keys))
         if keys.contains(key) {
-            modifiers.unionInPlace(keys)
-            keys = Set<String>()
+            modifiers.appendContentsOf(keys)
+            keys = [String]()
             let keyString = modifiers.joinWithSeparator("+")
-            modifiers.remove(key)
-            print(keyString)
+            modifiers.removeAtIndex(modifiers.indexOf(key)!)
+            if NetworkController.defaultController().connected {
+                NetworkController.defaultController().send(keyString)
+            }
         } else if modifiers.contains(key) {
-            modifiers.remove(key)
+            modifiers.removeAtIndex(modifiers.indexOf(key)!)
+        } else {
+            assertionFailure()
         }
     }
     

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FastSocket
 
 var g_defaultNetworkController: NetworkController?
 
@@ -19,6 +20,31 @@ class NetworkController {
             g_defaultNetworkController = NetworkController()
             return g_defaultNetworkController!
         }
+    }
+    
+    var socket: FastSocket!
+    var connected = false
+    
+    func connect(host: String, port: String) -> String? {
+        assert(!connected)
+        socket = FastSocket(host: host, andPort: port)
+        if socket.connect() {
+            connected = true
+            return nil
+        } else {
+            return socket.lastError.description
+        }
+    }
+    
+    func send(msg: String) {
+        assert(connected)
+        let data = (msg + "\n").dataUsingEncoding(NSUTF8StringEncoding)!
+        socket.sendBytes(data.bytes, count: data.length)
+    }
+    
+    func disconnect() {
+        assert(connected)
+        socket.close()
     }
     
 }

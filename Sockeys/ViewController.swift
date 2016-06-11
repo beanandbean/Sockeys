@@ -22,6 +22,10 @@ class ViewController: UIViewController {
     
     var buttons: [KeyButton]!
     
+    @IBOutlet weak var addressField: UITextField!
+    @IBOutlet weak var connectButton: UIButton!
+    @IBOutlet weak var statusLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -73,7 +77,7 @@ class ViewController: UIViewController {
         }
         let rightShift = KeyButton(frame: Rect(row: 4, col: 12.25, width: 2.25, height: 1), text: "Shift", value: "Shift_R")
         view.addSubview(rightShift)
-        let leftCtrl = KeyButton(frame: Rect(row: 5, col: 0, width: 1, height: 1), text: "Ctrl", value: "Ctrl_L")
+        let leftCtrl = KeyButton(frame: Rect(row: 5, col: 0, width: 1, height: 1), text: "Ctrl", value: "Control_L")
         view.addSubview(leftCtrl)
         let leftAlt = KeyButton(frame: Rect(row: 5, col: 1, width: 1, height: 1), text: "Alt", value: "Alt_L")
         view.addSubview(leftAlt)
@@ -81,7 +85,7 @@ class ViewController: UIViewController {
         view.addSubview(space)
         let rightAlt = KeyButton(frame: Rect(row: 5, col: 12.5, width: 1, height: 1), text: "Alt", value: "Alt_R")
         view.addSubview(rightAlt)
-        let rightCtrl = KeyButton(frame: Rect(row: 5, col: 13.5, width: 1, height: 1), text: "Ctrl", value: "Ctrl_R")
+        let rightCtrl = KeyButton(frame: Rect(row: 5, col: 13.5, width: 1, height: 1), text: "Ctrl", value: "Control_R")
         view.addSubview(rightCtrl)
     }
 
@@ -90,6 +94,32 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func connect(sender: AnyObject) {
+        if NetworkController.defaultController().connected {
+            NetworkController.defaultController().disconnect()
+            addressField.enabled = true
+            connectButton.setTitle("Connect", forState: .Normal)
+            statusLabel.text = "Disconnected!"
+        } else {
+            let address = addressField.text!
+            let host: String
+            let port: String
+            if let location = address.rangeOfString(":") {
+                host = address.substringToIndex(location.startIndex)
+                port = address.substringFromIndex(location.endIndex)
+            } else {
+                host = address
+                port = "4444"
+            }
+            if let error = NetworkController.defaultController().connect(host, port: port) {
+                statusLabel.text = error
+            } else {
+                addressField.enabled = false
+                connectButton.setTitle("Disconnect", forState: .Normal)
+                statusLabel.text = "Successfully connected!"
+            }
+        }
+    }
 
 }
 
