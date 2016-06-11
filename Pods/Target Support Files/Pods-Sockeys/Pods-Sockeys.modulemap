@@ -1,0 +1,6 @@
+framework module Pods_Sockeys {
+  umbrella header "Pods-Sockeys-umbrella.h"
+
+  export *
+  module * { export * }
+}

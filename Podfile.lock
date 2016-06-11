@@ -1,0 +1,12 @@
+PODS:
+  - FastSocket (1.3)
+
+DEPENDENCIES:
+  - FastSocket
+
+SPEC CHECKSUMS:
+  FastSocket: 0fa2716071517078d67ead1378d34af443bd54c4
+
+PODFILE CHECKSUM: eadbacb962babe16e4116b2664148a6cac9543bc
+
+COCOAPODS: 1.0.0
